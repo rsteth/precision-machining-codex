@@ -19,16 +19,18 @@
   <body>
     <div class="bg-graphic" aria-hidden="true"></div>
     <header class="site-header">
-      <a class="brand" href="index.html">
-        <span class="brand-mark">PP</span>
-        <span class="brand-text">Peak Precision Machining</span>
-      </a>
-      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">Menu</button>
-      <nav class="nav" data-nav>
-        <a href="index.html">Home</a>
-        <a href="services/machining.html">Services</a>
-        <a href="quote.html" class="active">Request Quote</a>
-      </nav>
+      <div class="site-header-inner">
+        <a class="brand" href="index.html">
+          <span class="brand-mark">PP</span>
+          <span class="brand-text">Peak Precision Machining</span>
+        </a>
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">Menu</button>
+        <nav class="nav" data-nav>
+          <a href="index.html">Home</a>
+          <a href="services/machining.html">Services</a>
+          <a href="quote.html" class="active">Request Quote</a>
+        </nav>
+      </div>
     </header>
 
     <main>
@@ -98,8 +100,15 @@
     </main>
 
     <footer class="site-footer">
-      <p>Peak Precision Machining • Bow Valley, Alberta</p>
-      <a href="tel:+14035551234">Call 24/7 Line</a>
+      <div class="footer-info">
+        <p class="footer-brand">Peak Precision Machining Ltd</p>
+        <p>Bow Valley, Alberta</p>
+      </div>
+      <div class="footer-contact">
+        <a href="tel:+14036797842">403-679-7842</a>
+        <a href="mailto:info@peakprecisionmachining.ca">info@peakprecisionmachining.ca</a>
+      </div>
+      <a class="btn btn-ghost btn-sm" href="quote.html">Request a Quote</a>
     </footer>
 
     <script src="assets/js/site.js"></script>

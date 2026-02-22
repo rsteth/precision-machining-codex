@@ -8,7 +8,7 @@ if (toggle && nav) {
   });
 }
 
-const animatedNodes = document.querySelectorAll('.service-card, .service-detail article, .testimonial, .hero-card');
+const animatedNodes = document.querySelectorAll('.service-card, .service-detail article, .testimonial, .hero-card, .capability-item');
 animatedNodes.forEach((node, index) => {
   node.classList.add('fade-in');
   node.style.animationDelay = `${Math.min(index * 70, 350)}ms`;
