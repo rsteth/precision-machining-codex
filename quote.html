@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Request a Quote | Peak Precision Machining</title>
+    <meta
+      name="description"
+      content="Request a quote for machining, field service, pump rebuilds, or rigging support."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <div class="bg-graphic" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">PP</span>
+        <span class="brand-text">Peak Precision Machining</span>
+      </a>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">Menu</button>
+      <nav class="nav" data-nav>
+        <a href="index.html">Home</a>
+        <a href="services/machining.html">Services</a>
+        <a href="quote.html" class="active">Request Quote</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section page-hero">
+        <p class="eyebrow">Request a Quote</p>
+        <h1>Tell us what needs fixing or building.</h1>
+        <p>Share your scope, timeline, and urgency. We will follow up quickly with next steps.</p>
+      </section>
+
+      <section class="section form-wrap">
+        <form class="quote-form" action="#" method="post">
+          <label>
+            Name
+            <input type="text" name="name" required />
+          </label>
+
+          <label>
+            Company
+            <input type="text" name="company" required />
+          </label>
+
+          <label>
+            Email
+            <input type="email" name="email" required />
+          </label>
+
+          <label>
+            Phone
+            <input type="tel" name="phone" required />
+          </label>
+
+          <label>
+            Service Type
+            <select name="service" required>
+              <option value="">Select one</option>
+              <option>Precision Machining</option>
+              <option>Field Service</option>
+              <option>Pump Rebuild</option>
+              <option>Rigging Support</option>
+            </select>
+          </label>
+
+          <label>
+            Urgency
+            <select name="urgency" required>
+              <option value="">Select one</option>
+              <option>Emergency (as soon as possible)</option>
+              <option>This week</option>
+              <option>This month</option>
+              <option>Planning phase</option>
+            </select>
+          </label>
+
+          <label class="full-width">
+            Job Details
+            <textarea name="details" rows="5" required></textarea>
+          </label>
+
+          <label class="full-width">
+            Drawing or Photo Reference (filename)
+            <input type="text" name="attachment" placeholder="e.g. pump-housing-photo.jpg" />
+          </label>
+
+          <button class="btn btn-primary full-width" type="submit">Submit Quote Request</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Peak Precision Machining • Bow Valley, Alberta</p>
+      <a href="tel:+14035551234">Call 24/7 Line</a>
+    </footer>
+
+    <script src="assets/js/site.js"></script>
+  </body>
+</html>
