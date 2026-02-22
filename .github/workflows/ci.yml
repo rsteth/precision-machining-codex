@@ -1,0 +1,82 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate-and-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate HTML files and internal links
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import pathlib
+          import re
+          import sys
+          from html.parser import HTMLParser
+
+          root = pathlib.Path('.')
+          html_files = sorted(root.rglob('*.html'))
+
+          if not html_files:
+            print('No HTML files found.')
+            sys.exit(1)
+
+          class RefParser(HTMLParser):
+            def __init__(self):
+              super().__init__()
+              self.refs = []
+
+            def handle_starttag(self, tag, attrs):
+              for key, value in attrs:
+                if key in {'href', 'src'} and value:
+                  self.refs.append(value)
+
+          failures = 0
+
+          for file in html_files:
+            text = file.read_text(encoding='utf-8')
+            if '<!doctype html>' not in text.lower():
+              print(f'Missing doctype: {file}')
+              failures += 1
+
+            parser = RefParser()
+            parser.feed(text)
+
+            for ref in parser.refs:
+              if re.match(r'^(https?:|mailto:|tel:|#)', ref):
+                continue
+
+              base = file.parent
+              target = (base / ref).resolve()
+              if not target.exists():
+                print(f'Missing reference in {file}: {ref}')
+                failures += 1
+
+          if failures:
+            print(f'Validation failed with {failures} issue(s).')
+            sys.exit(1)
+
+          print(f'Validated {len(html_files)} HTML files successfully.')
+          PY
+
+      - name: Build site artifact
+        run: |
+          set -euo pipefail
+          rm -rf dist
+          mkdir -p dist
+          cp -R index.html quote.html services assets dist/
+
+      - name: Upload CI artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-dist
+          path: dist
